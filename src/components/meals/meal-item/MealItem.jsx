@@ -26,7 +26,7 @@ const Container = styled.li`
     border-bottom: 1px solid #D6D6D6;
     margin-bottom: 20px;
     :last-child{
-      border: none;
+      border: none; 
       margin-bottom: 0;
     }
 `

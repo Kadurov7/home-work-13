@@ -26,13 +26,7 @@ const StyledBtn = styled.button`
     align-items: center;
     color: #ffffff;
     border: none;
-    cursor: pointer;
-    &&:hover{
-        background-color: #2c0d00;
-    }
-    &&:hover > #counter{
-        background-color: #1a0902;
-    }
+  
 `
 const StyledTitle = styled.span`
     margin-left: 12px;

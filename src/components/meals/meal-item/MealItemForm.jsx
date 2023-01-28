@@ -9,7 +9,7 @@ const MealItemForm = ({id}) => {
     <StyledForm>
        <Contaiber>
        <label htmlFor={id}>Amount</label>
-       <input type="number" id={id} min={1} max={5} defaultValue={1}/>
+       <input type="number" id={id} min={1} max={5} defaultValue={1 }/>
        </Contaiber>
             <Button>
             <StyledIcon/>Add

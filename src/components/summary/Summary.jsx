@@ -15,7 +15,7 @@ const Summary = () => {
 
 export default Summary;
 const Container = styled.div`
-    height:410px;
+    height:404.5px;
     width: 100%;
     margin: 0 auto;
     margin-bottom: 150px;

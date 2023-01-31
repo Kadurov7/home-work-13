@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { BasketContext } from '../../../store/BasketContext'
 import MealItemForm from './MealItemForm'
 
 const MealItem = ({meal}) => {
+
+  
   return (
    
         <Container>
@@ -11,7 +14,7 @@ const MealItem = ({meal}) => {
           <p>{meal.descreption}</p>
           <span>${meal.price}</span>
         </StyledIyemInfo>
-        <MealItemForm id={meal.id}/> 
+        <MealItemForm id={meal._id} title={meal.title} price={meal.price}/> 
       </Container>
   
   )

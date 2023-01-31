@@ -1,52 +1,44 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Modal from '../UI/Modal'
 import TotalAmount from './TotalAmount'
 import styled from 'styled-components'
 import BasketItem from './BasketItem'
+import { BasketContext } from '../../store/BasketContext'
 
 
-const Basket = () => {
+const Basket = ({onClose}) => {
+const {items,uptadeBasketItem, deleteBasketItem } = useContext(BasketContext)
+const getTotalPrice = ()=>{
+  return items.reduce((sum, {price, amount})=> sum + amount * price, 0)
+}
+  const decrementAmount = (id, amount)=>{
 
-  const items = [
-    {
-      id:'1',
-      title:'Sushi',
-      amount:1,
-      price: 22.99,
-    },
-    {
-      id:'2',
-      title:'Schnitzel',
-      amount:1,
-      price:16.99,
-    },
-    {
-      id:'3',
-      title:'Barbecue Burger',
-      amount:1,
-      price: 12.99,
-    },
-    {
-      id:'4',
-      title:'Green Bowl',
-      amount:1,
-      price: 19.99,
-    },
-  ]
+      if(amount > 1) {
+        uptadeBasketItem({amount:amount - 1, id})
+      }
+      else{
+        deleteBasketItem(id)
+      }
+  }
+  const incrementAmount = (id, amount)=>{
+    uptadeBasketItem({amount:amount + 1, id})
+  }
   return (
       <Modal onClose={()=>{}}>
         <Content>
           {items.length ?(<FixedContainer>
           {items.map((item)=> (
             <BasketItem 
-                   key={item.id}
+                   key={item._id}
+                   incrementAmount={()=>incrementAmount(item._id, item.amount)}
+                   decrementAmount={()=>decrementAmount(item._id, item.amount)}
                    title={item.title}
                    price={item.price}
                    amount={item.amount}/>
           )) }
           </FixedContainer>) : null}
           
-        <TotalAmount price={200.5034} onClose={()=>{}} onOrder={()=>{}} />
+        <TotalAmount price={getTotalPrice()} onClose={onClose} onOrder={()=>{}} />
         </Content>
       
       </Modal>

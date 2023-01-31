@@ -1,19 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Button from '../UI/Button'
 import styled from 'styled-components'
+import { BasketContext } from '../../store/BasketContext'
 
-const BasketItem = ({title, price, amount}) => {
+const BasketItem = ({title, price, amount, decrementAmount, incrementAmount}) => {
+
+
   return (
     <Container>
         <Title>{title}</Title>
         <Content>
             <PriceAndAmountContainer>
-                <Price>{price}</Price>
+                <Price>${price}</Price>
                 <Amount>{amount}</Amount>
             </PriceAndAmountContainer>
             <CounterConteiner>
-              <Button borderStyle="sususu" variant="outlained">-</Button>
-              <Button borderStyle="sususu" variant="outlained">+</Button>
+              <Button borderStyle="sususu" variant="outlained" onClick={decrementAmount}>-</Button>
+              <Button borderStyle="sususu" variant="outlained" onClick={incrementAmount}>+</Button>
             </CounterConteiner>
         </Content>
     </Container>

@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import {ReactComponent as BasketIcon } from '../../assets/icons/Component 6/basket-svg.svg'
 
 
-const BasketButton = ({count = 0}) => {
+const BasketButton = ({count = 0, ...restProps}) => {
   return (
-    <StyledBtn>
+    <StyledBtn {...restProps}>
            <BasketIcon/>
             <StyledTitle>Your Cart</StyledTitle>
-            <StyledConter>{count}</StyledConter>
+            <StyledConter id='counter'>{count || 0}</StyledConter>
     </StyledBtn>
   )
 }
@@ -26,11 +26,36 @@ const StyledBtn = styled.button`
     align-items: center;
     color: #ffffff;
     border: none;
+    &&:hover > #counter{
+        background-color: #1a0902;
+    }
+    &&.bump {
+  animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
   
 `
 const StyledTitle = styled.span`
     margin-left: 12px;
     margin-right: 24px;
+ 
 `
 const StyledConter = styled.span`
     color: white;
